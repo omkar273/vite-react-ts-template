@@ -1,6 +1,8 @@
 import react from "@vitejs/plugin-react-swc";
-import * as path from "path";
+import { resolve } from "path";
 import { defineConfig } from "vite";
+
+const root = resolve(__dirname, "src");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +16,9 @@ export default defineConfig({
     origin: "http://localhost:3000",
   },
   resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    alias: {
+      "@": resolve(root, ""),
+      "pages": resolve(root, "pages"),
+    },
   },
 });
